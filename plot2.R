@@ -15,7 +15,9 @@ png(file="plot2.png",width=480,height=480)
 
 plot.new()
 par(mfcol=c(1,1), mar=c(5.6,4.1,4.1,2.1))
-plot(Global_active_power ~ datetime, data=wdata, type="l", xaxt="n",xlab = "",ylab ="Global Active Power (killowatts)")
+
+with (wdata, plot(datetime,Global_active_power, 
+        type="l", xaxt="n",xlab = "",ylab ="Global Active Power (killowatts)"))
 ## changing x-axis ticks
 axis.Date(1,wdata$datetime,format="%a", labels = T,
           at=c(seq(wdata$datetime[1], wdata$datetime[length(wdata$datetime)]+7,1)), tck = +0.01)
