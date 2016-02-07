@@ -18,11 +18,14 @@ par(mfcol=c(1,1),par(mar=c(4,4,2,1)),oma=c(1,0,0,2))
 
 lmin<-min(wdata$Sub_metering_1,wdata$Sub_metering_2,wdata$Sub_metering_3)
 lmax<-max(wdata$Sub_metering_1,wdata$Sub_metering_2,wdata$Sub_metering_3)
-plot(Sub_metering_1 ~ datetime, data=wdata, type="l", xaxt="n",xlab = "",ylab ="Energy Sub metering", ylim=c(lmin,lmax))
+with (wdata,plot(datetime, Sub_metering_1 ,  
+                 type="l", xaxt="n",xlab = "",ylab ="Energy Sub metering", ylim=c(lmin,lmax)))
 par(new=T)
-plot(Sub_metering_2 ~ datetime, data=wdata, type="l", xaxt="n",xlab = "",ylab ="Energy Sub metering", ylim=c(lmin,lmax),col="red")
+with(wdata, plot(datetime,Sub_metering_2, 
+                 type="l", xaxt="n",xlab = "",ylab ="Energy Sub metering", ylim=c(lmin,lmax),col="red"))
 par(new=T)
-plot(Sub_metering_3 ~ datetime, data=wdata, type="l", xaxt="n",xlab = "",ylab ="Energy Sub metering", ylim=c(lmin,lmax),col="blue")
+with(wdata, plot(datetime,Sub_metering_3,
+                 type="l", xaxt="n",xlab = "",ylab ="Energy Sub metering", ylim=c(lmin,lmax),col="blue"))
 ## x-axis
 axis.Date(1,wdata$datetime,format="%a", labels = T,
           at=c(seq(wdata$datetime[1], wdata$datetime[length(wdata$datetime)]+7,1)), tck = +0.01)
