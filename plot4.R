@@ -17,7 +17,8 @@ plot.new()
 par(mfcol=c(2,2), mar=c(4,4,2,1))
 with(wdata, {
   {
-    plot(Global_active_power ~ datetime, data=wdata, type="l", xaxt="n",xlab = "",ylab ="Global Active Power (killowatts)")
+    plot(datetime,Global_active_power,
+         type="l", xaxt="n",xlab = "",ylab ="Global Active Power (killowatts)")
     axis.Date(1,datetime,format="%a", labels = T,
               at=c(seq(datetime[1], datetime[length(datetime)]+7,1)), tck = +0.01)
   }
@@ -25,11 +26,14 @@ with(wdata, {
   par(mar=c(4,4,2,1))
   lmin<-min(Sub_metering_1,Sub_metering_2,Sub_metering_3)
   lmax<-max(Sub_metering_1,Sub_metering_2,Sub_metering_3)
-  plot(Sub_metering_1 ~ datetime, data=wdata, type="l", xaxt="n",xlab = "",ylab ="Energy Sub metering", ylim=c(lmin,lmax))
+  plot(datetime,Sub_metering_1,
+       type="l", xaxt="n",xlab = "",ylab ="Energy Sub metering", ylim=c(lmin,lmax))
   par(new=T)
-  plot(Sub_metering_2 ~ datetime, data=wdata, type="l", xaxt="n",xlab = "",ylab ="Energy Sub metering", ylim=c(lmin,lmax),col="red")
+  plot(datetime,Sub_metering_2,
+       type="l", xaxt="n",xlab = "",ylab ="Energy Sub metering", ylim=c(lmin,lmax),col="red")
   par(new=T)
-  plot(Sub_metering_3 ~ datetime, data=wdata, type="l", xaxt="n",xlab = "",ylab ="Energy Sub metering", ylim=c(lmin,lmax),col="blue")
+  plot( datetime,Sub_metering_3,
+        type="l", xaxt="n",xlab = "",ylab ="Energy Sub metering", ylim=c(lmin,lmax),col="blue")
   ## x-axis
   axis.Date(1,datetime,format="%a", labels = T,
             at=c(seq(datetime[1], datetime[length(datetime)]+7,1)), tck = +0.01)
@@ -40,12 +44,14 @@ with(wdata, {
          legend = c(names(wdata)[7],names(wdata)[8],names(wdata)[9] ) )
   }
   {
-  plot(Voltage ~ datetime, data=wdata, type="l", xaxt="n",xlab = "")
+  plot( datetime,Voltage, 
+        type="l", xaxt="n",xlab = "")
   axis.Date(1,datetime,format="%a", labels = T,
             at=c(seq(datetime[1], datetime[length(datetime)]+7,1)), tck = +0.01)
   }
   {
-  plot(Global_reactive_power ~ datetime, data=wdata, type="l", xaxt="n",xlab = "")
+  plot(datetime,Global_reactive_power,
+       type="l", xaxt="n",xlab = "")
   axis.Date(1,datetime,format="%a", labels = T,
             at=c(seq(datetime[1], datetime[length(datetime)]+7,1)), tck = +0.01)
   }
